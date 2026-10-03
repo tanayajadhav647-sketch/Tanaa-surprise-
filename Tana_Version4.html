@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Tana</title>
+  <style>
+    :root{
+      --bg1:#fffaf8;
+      --bg2:#fcecf1;
+      --rose:#e991b0;
+      --rose-dark:#905d72;
+      --rose-soft:#fff0f5;
+      --peach:#ffd7c9;
+      --text:#483339;
+      --muted:#7a5d65;
+      --card:rgba(255,255,255,0.8);
+      --shadow:0 20px 50px rgba(110, 68, 82, 0.12);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{
+      margin:0;
+      min-height:100%;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    body{
+      display:flex;
+      justify-content:center;
+      padding:24px 14px 48px;
+    }
+
+    .app{
+      width:min(760px,100%);
+    }
+
+    .screen{
+      display:none;
+      animation: fadeIn .8s ease;
+    }
+
+    .screen.active{
+      display:block;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid rgba(123, 76, 88, 0.08);
+      border-radius:32px;
+      box-shadow: var(--shadow);
+      padding:28px 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .mini{
+      font-size:12px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      opacity:0.72;
+      margin:0 0 12px;
+    }
+
+    .heart{
+      font-size:54px;
+      display:inline-block;
+      animation: float 2.3s ease-in-out infinite;
+      margin-bottom:8px;
+    }
+
+    h1{
+      margin:5px 0 10px;
+      font-size:clamp(36px, 9vw, 62px);
+      line-height:1.04;
+      letter-spacing:-0.06em;
+    }
+
+    h2{
+      margin:0 0 12px;
+      font-size:clamp(28px, 5vw, 38px);
+      line-height:1.2;
+    }
+
+    p{
+      font-size:1.08rem;
+      line-height:1.8;
+      margin:10px 0;
+      color:var(--text);
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size:1.05rem;
+      line-height:1.75;
+    }
+
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    button{
+      border:none;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--rose), var(--rose-dark));
+      color:white;
+      padding:14px 26px;
+      cursor:pointer;
+      font-weight:700;
+      letter-spacing:0.04em;
+      box-shadow:0 12px 24px rgba(143, 89, 108, 0.18);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover{
+      transform: translateY(-1px);
+    }
+
+    .memory{
+      background: var(--rose-soft);
+      border-radius:20px;
+      padding:16px 18px;
+      margin:16px 0;
+      border:1px solid rgba(121, 81, 92, 0.06);
+    }
+
+    .memory strong{
+      display:block;
+      margin-bottom:5px;
+      font-size:1.08rem;
+    }
+
+    .feature{
+      width:100%;
+      aspect-ratio: 1 / 1.08;
+      object-fit:cover;
+      display:block;
+      border-radius:24px;
+      margin:10px 0 18px;
+      box-shadow:0 18px 30px rgba(90, 52, 62, 0.08);
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(150px,1fr));
+      gap:14px;
+      margin-top:12px;
+    }
+
+    .photo{
+      aspect-ratio:1/1;
+      border-radius:22px;
+      overflow:hidden;
+      background:linear-gradient(135deg, #fbdfe8, #f5d3dd);
+      box-shadow:0 10px 18px rgba(77, 43, 52, 0.1);
+    }
+
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .letter{
+      background:#fffafc;
+      border:1px solid rgba(142, 92, 110, 0.08);
+      border-radius:20px;
+      padding:18px 16px;
+      margin-top:14px;
+    }
+
+    .signature{
+      margin-top:12px;
+      font-weight:700;
+      font-size:1.08rem;
+    }
+
+    .heart-row{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      font-size:1.05rem;
+      color:#d97da4;
+      margin-top:8px;
+    }
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform:translateY(12px); }
+      to{ opacity:1; transform:none; }
+    }
+
+    @keyframes float{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+
+    <section class="screen active">
+      <div class="card">
+        <div class="heart">💌</div>
+        <p class="mini">A little surprise</p>
+        <h1>Hey, Tana...</h1>
+        <p class="subtitle">This is just a tiny little reminder that you are one of my favorite people in the world.</p>
+        <div class="btn-row">
+          <button onclick="next()">Open it</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="card">
+        <div class="heart">🤍</div>
+        <h2>My cute favorite person</h2>
+        <p>Some people become part of your favorite memories without even trying.</p>
+        <p>You are one of those people.</p>
+        <p>And somehow, even the smallest moments with you feel special.</p>
+        <div class="btn-row">
+          <button onclick="next()">Keep going</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="card">
+        <h2>Our tiny sweet memories</h2>
+
+        <div class="memory">
+          <strong>🥰 The awkwardly beautiful first kiss</strong>
+          It was a little awkward, a little nervous, and somehow one of the sweetest memories ever.
+        </div>
+
+        <div class="memory">
+          <strong>🎁 The handmade gift</strong>
+          It wasn’t just the gift — it was the love and thought behind it.
+        </div>
+
+        <div class="memory">
+          <strong>🧥 Your hoodie</strong>
+          Wearing it felt so cute and so comforting at the same time.
+        </div>
+
+        <div class="memory">
+          <strong>🚶‍♀️ Walking home together</strong>
+          Those little everyday moments became some of my favorite memories.
+        </div>
+
+        <div class="btn-row">
+          <button onclick="next()">More cuteness</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="card">
+        <h2>Our little gallery</h2>
+        <img class="feature" src="image1.jpg" alt="Our favorite memory" />
+
+        <div class="gallery">
+          <div class="photo"><img src="image2.jpg" alt="Memory 2" /></div>
+          <div class="photo"><img src="image3.jpg" alt="Memory 3" /></div>
+          <div class="photo"><img src="image4.jpg" alt="Memory 4" /></div>
+          <div class="photo"><img src="image1.jpg" alt="Memory 1" /></div>
+        </div>
+
+        <div class="btn-row">
+          <button onclick="next()">One last thing</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="card">
+        <h2>For you, Tana</h2>
+        <div class="letter">
+          <p>I don’t think love is only about big surprises.</p>
+          <p>Sometimes it’s in the little things — a smile, a laugh, a warm hug, a random conversation, a quiet little moment that somehow feels like home.</p>
+          <p>And with you, even the simple things turn into memories I never want to forget.</p>
+          <p>So this is my little reminder that you matter to me, you make my days better, and you’re a big part of my favorite memories.</p>
+          <p><strong>Happy Boyfriend’s Day, Tana. 🫶</strong></p>
+          <p>I’m really glad you’re in my life.</p>
+        </div>
+        <div class="btn-row">
+          <button onclick="next()">The end</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="card">
+        <div class="heart">💗</div>
+        <h2>Forever,</h2>
+        <p class="subtitle">A little universe made from small moments and lots of love.</p>
+        <div class="heart-row">
+          <span>♡</span>
+          <span>♡</span>
+          <span>♡</span>
+        </div>
+        <p class="signature">— for you, always</p>
+        <div class="btn-row">
+          <button onclick="restart()">Watch again</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const screens = document.querySelectorAll('.screen');
+    let index = 0;
+
+    function next(){
+      screens[index].classList.remove('active');
+      index = (index + 1) % screens.length;
+      screens[index].classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function restart(){
+      screens[index].classList.remove('active');
+      index = 0;
+      screens[index].classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
